@@ -12,7 +12,7 @@ class leds():
 #         for i in self.size:
 #             temp=[]
 #             for j in self.size: 
-#                 temp.append("false")
+#                 temp.append("false")   
 #             self.matrix.append(temp)
 #       print (self.size) 
         
@@ -20,7 +20,8 @@ class leds():
     def turn_on(self,c,e):
         x1,y1 = c.split(',')
         x2,y2 = e.split(',')
-        x1,x2,y1,y2=int(x1),int(x2),int(y1),int(y2) #cast each var to int
+        x1,x2,y1,y2=int(x1),int(x2),int(y1),int(y2)
+        x1,y1,x2,y2=self.error_number(x1),self.error_number(y1),self.error_number(x2),self.error_number(y2)
         
         for i in range (x1,x2+1):
             for j in range (y1, y2+1):
@@ -30,6 +31,7 @@ class leds():
         x1,y1 = c.split(',')
         x2,y2 = e.split(',')
         x1,x2,y1,y2=int(x1),int(x2),int(y1),int(y2)
+        x1,y1,x2,y2=self.error_number(x1),self.error_number(y1),self.error_number(x2),self.error_number(y2)
         for i in range (x1,x2+1):
             for j in range (y1, y2+1):
                 self.matrix[i][j] = False
@@ -38,12 +40,21 @@ class leds():
         x1,y1 = b.split(',')
         x2,y2 = d.split(',')
         x1,x2,y1,y2=int(x1),int(x2),int(y1),int(y2)
+        x1,y1,x2,y2=self.error_number(x1),self.error_number(y1),self.error_number(x2),self.error_number(y2)
         for i in range (x1,x2+1):
             for j in range (y1, y2+1):
                 if self.matrix[i][j] == True:
                     self.matrix[i][j] = False
                 elif self.matrix[i][j] == False:
                     self.matrix[i][j] = True  
+     
+    def error_number(self, number): 
+        if number > self.size:
+            return self.size-1
+        elif number < 0:
+            return 0
+        else:
+            return number 
                     
     def answer(self):
         count=0
