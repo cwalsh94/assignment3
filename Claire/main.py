@@ -1,3 +1,8 @@
+'''
+Created on Mar 1, 2017
+
+@author: Claire
+'''
 import urllib.request
 import os
 import sys
@@ -12,7 +17,7 @@ class leds():
 #         for i in self.size:
 #             temp=[]
 #             for j in self.size: 
-#                 temp.append("false")   
+#                 temp.append("false")
 #             self.matrix.append(temp)
 #       print (self.size) 
         
@@ -87,8 +92,8 @@ def main():
 #     file_str = read_file('http://claritytrec.ucd.ie/~alawlor/comp30670/input_assign3.txt')
 #     first_line = int(file_str.splitlines()[0])
 #     file_line=read_file("../../data/input_assign3.txt")
-    file_line = read('http://claritytrec.ucd.ie/~alawlor/comp30670/input_assign3_b.txt')
-#     file_line = read(sys.argv[2])
+#     file_line = read('http://claritytrec.ucd.ie/~alawlor/comp30670/input_assign3_b.txt')
+    file_line = read(sys.argv[2])
     
     lines = file_line.split('\n') #go to next line (split everything) --set into array
 #     print(lines)
@@ -99,6 +104,7 @@ def main():
     for line in lines:
 #         if line.startswith(" "): line = line[:-1]
 #         if line.endswith(" "): line = line[1:]
+        line = end_space(line)
         if 'turn on' in line:
             a,b,c,d,e = line.split(" ")
             array.turn_on (c,e)
@@ -113,6 +119,16 @@ def main():
             pass 
     lights_on=array.answer()
     print(lights_on)
+
+def end_space(space):
+    space = space.replace(" ,", ",")
+    space = space.replace(", ",",")
+    space = space.strip()
+    space= space.replace(" switch","switch")
+    space = space.replace(" turn on","turn on")
+    space = space.replace(" turn off","turn off")
+    return space  
+ 
  
 if __name__ == '__main__':   
     main()
