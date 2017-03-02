@@ -12,3 +12,4 @@ setup(name="solve_led",
           'console_scripts':['solve_led=Claire.main:main']
           }
       )
+  
