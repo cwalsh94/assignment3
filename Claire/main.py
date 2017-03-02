@@ -77,13 +77,14 @@ def read(fileName):
         file_line=file_handle.read().decode('utf-8')
         return file_line
     
-    else:
-        if not os.path.isfile(fileName):
-            print('File does not exist.')
-        else:
+#     else:
+#         if not os.path.isfile(fileName):
+#             print('File does not exist.')
+#         else:
         # Open the file for reading as a string
-            file_line = open(fileName, 'r').read() #puts into string
-            return file_line 
+    else:
+        file_line = open(fileName, 'r').read() #puts into string
+        return file_line 
        
 
     
@@ -93,7 +94,7 @@ def main():
 #     first_line = int(file_str.splitlines()[0])
 #     file_line=read_file("../../data/input_assign3.txt")
 #     file_line = read('http://claritytrec.ucd.ie/~alawlor/comp30670/input_assign3_b.txt')
-    file_line = read(sys.argv[2])
+    file_line = read(sys.argv[2])  
     
     lines = file_line.split('\n') #go to next line (split everything) --set into array
 #     print(lines)
